@@ -8,9 +8,9 @@
 
     <div id="mojdiv">Text</div>
 
-    <img width="150px"
-    src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-    alt="Google logo">
+    <img
+        width = "150px"
+        src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google logo">
 
     <p>text2</p>
 
@@ -27,6 +27,20 @@
         setInterval(() => {
             mojDivVJS.style.backgroundColor = "blue";
         }, 2000);
+
+        //vazna vec
+
+        odpoved_raw = fetch("https://boozeapi.com/api/v1/cocktails")
+        .then((odpoved_raw) => {
+            odpoved_raw.json().then((odpoved) => {
+                console.log(odpoved.data);
+
+                odpoved.data.forEach((drink) => {
+                    //mojDivVJS
+            })
+        })
+        
+        
     </script>
 
 </body>
