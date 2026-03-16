@@ -37,8 +37,9 @@
 
                 odpoved.data.forEach((drink) => {
                     //mojDivVJS
-            })
-        })
+                });
+            });
+        });
         
         
     </script>

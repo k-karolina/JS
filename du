@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Test</title>
+</head>
+
+<body>
+    <h1>AHOJ</h1>
+
+    <div id="mojdiv">Text</div>
+
+    <p>Drinks:</p>
+    <div id="drinks"></div>
+
+    <script>
+        console.log("laaa lalalalaaa lalalalaaa laaaala");
+
+        const mojDivVJS = document.getElementById("mojdiv");
+        mojDivVJS.textContent = "Ahoj z JS";
+
+        setInterval(() => {
+            mojDivVJS.style.backgroundColor = "red";
+        }, 1000);
+
+        setInterval(() => {
+            mojDivVJS.style.backgroundColor = "blue";
+        }, 2000);
+
+        // FETCH z BoozeAPI
+        fetch("https://boozeapi.com/api/v1/cocktails")
+        .then((response) => response.json())
+        .then((data) => {
+
+            const drinksDiv = document.getElementById("drinks");
+
+            data.data.forEach((drink) => {
+
+                // vytvorenie obrázka
+                const img = document.createElement("img");
+                img.src = drink.image;   // obrázok drinku
+                img.width = 150;
+
+                // názov drinku
+                const name = document.createElement("p");
+                name.textContent = drink.name;
+
+                // pridanie do stránky
+                drinksDiv.appendChild(name);
+                drinksDiv.appendChild(img);
+            });
+
+        })
+        .catch((error) => {
+            console.error("Chyba:", error);
+        });
+
+    </script>
+
+</body>
+</html>
