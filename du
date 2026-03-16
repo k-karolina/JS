@@ -42,8 +42,6 @@ body{
 
 <script>
 
-console.log("laaa lalalalaaa lalalalaaa laaaala");
-
 const mojDivVJS = document.getElementById("mojdiv");
 mojDivVJS.textContent = "Ahoj z JS";
 
