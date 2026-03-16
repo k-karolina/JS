@@ -1,59 +1,92 @@
 <html>
 <head>
-    <title>Test</title>
+<title>Drinks</title>
+
+<style>
+body{
+    font-family: Arial;
+    text-align:center;
+    background:#f5f5f5;
+}
+
+#drinks{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    margin:10px;
+    padding:10px;
+    width:180px;
+    background:#f0f8ff;
+    border-radius:15px;
+    box-shadow:2px 2px 10px rgba(0,0,0,0.2);
+}
+
+.card img{
+    width:150px;
+    border-radius:10px;
+}
+</style>
+
 </head>
 
 <body>
-    <h1>AHOJ</h1>
 
-    <div id="mojdiv">Text</div>
+<h1>🍹 Drinks 🍸</h1>
 
-    <p>Drinks:</p>
-    <div id="drinks"></div>
+<div id="mojdiv">Text</div>
 
-    <script>
-        console.log("laaa lalalalaaa lalalalaaa laaaala");
+<div id="drinks"></div>
 
-        const mojDivVJS = document.getElementById("mojdiv");
-        mojDivVJS.textContent = "Ahoj z JS";
+<script>
 
-        setInterval(() => {
-            mojDivVJS.style.backgroundColor = "red";
-        }, 1000);
+console.log("laaa lalalalaaa lalalalaaa laaaala");
 
-        setInterval(() => {
-            mojDivVJS.style.backgroundColor = "blue";
-        }, 2000);
+const mojDivVJS = document.getElementById("mojdiv");
+mojDivVJS.textContent = "Ahoj z JS";
 
-        // FETCH z BoozeAPI
-        fetch("https://boozeapi.com/api/v1/cocktails")
-        .then((response) => response.json())
-        .then((data) => {
+setInterval(() => {
+    mojDivVJS.style.backgroundColor = "red";
+}, 1000);
 
-            const drinksDiv = document.getElementById("drinks");
+setInterval(() => {
+    mojDivVJS.style.backgroundColor = "blue";
+}, 2000);
 
-            data.data.forEach((drink) => {
 
-                // vytvorenie obrázka
-                const img = document.createElement("img");
-                img.src = drink.image;   // obrázok drinku
-                img.width = 150;
+// FETCH z BoozeAPI
+fetch("https://boozeapi.com/api/v1/cocktails")
+.then((response) => response.json())
+.then((data) => {
 
-                // názov drinku
-                const name = document.createElement("p");
-                name.textContent = drink.name;
+    const drinksDiv = document.getElementById("drinks");
 
-                // pridanie do stránky
-                drinksDiv.appendChild(name);
-                drinksDiv.appendChild(img);
-            });
+    data.data.forEach((drink) => {
 
-        })
-        .catch((error) => {
-            console.error("Chyba:", error);
-        });
+        const card = document.createElement("div");
+        card.className = "card";
 
-    </script>
+        const name = document.createElement("b");
+        name.textContent = drink.name;
+
+        const img = document.createElement("img");
+        img.src = drink.image;
+
+        card.appendChild(name);
+        card.appendChild(document.createElement("br"));
+        card.appendChild(img);
+
+        drinksDiv.appendChild(card);
+    });
+
+})
+.catch((error) => {
+    console.log("Chyba:", error);
+});
+
+</script>
 
 </body>
 </html>
